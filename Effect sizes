@@ -1,0 +1,359 @@
+#Load SHELOBmcmc.Rdata
+
+#Untreated means are 0.3 (rats), 0.5 (wasps), 0.6 (mice and ants)
+#Use 0.5 for any being kept constant, use 0.6 and 0 for effect size
+#Effect sizes for Mice
+N6 <- 6
+N5 <- 5
+predEQM1 <- mat.or.vec(25000,N6)
+predEQM2 <- mat.or.vec(25000,N5)
+predEQM3 <- mat.or.vec(25000,N6)
+predEQM4 <- mat.or.vec(25000,N5)
+predEQM5 <- mat.or.vec(25000,N6)
+predEQM6 <- mat.or.vec(25000,N5)
+predM <- as.matrix(1:36, nrow= 36, ncol=1)
+predM <- cbind(predM, rep(0, 36))
+predM <- cbind(predM, rep(0, 36))
+predM <- cbind(predM, rep(0, 36))
+for(i in 1:N6){
+predEQM1[,i] <- exp(SHELOB.mcmc[[1]][,i] + SHELOB.mcmc[[1]][,i+6]*0.6 + SHELOB.mcmc[[1]][,i+12]*0.5 + SHELOB.mcmc[[1]][,i+18]*0.5 + SHELOB.mcmc[[1]][,i+24]*0.5)/(1+exp(SHELOB.mcmc[[1]][,i] + SHELOB.mcmc[[1]][,i+6]*0.6 + SHELOB.mcmc[[1]][,i+12]*0.5 + SHELOB.mcmc[[1]][,i+18]*0.5 + SHELOB.mcmc[[1]][,i+24]*0.5)) - exp(SHELOB.mcmc[[1]][,i] + SHELOB.mcmc[[1]][,i+6]*0 + SHELOB.mcmc[[1]][,i+12]*0.5 + SHELOB.mcmc[[1]][,i+18]*0.5 + SHELOB.mcmc[[1]][,i+24]*0.5)/(1+exp(SHELOB.mcmc[[1]][,i] + SHELOB.mcmc[[1]][,i+6]*0 + SHELOB.mcmc[[1]][,i+12]*0.5 + SHELOB.mcmc[[1]][,i+18]*0.5 + SHELOB.mcmc[[1]][,i+24]*0.5))
+
+predEQM3[,i] <- exp(SHELOB.mcmc[[1]][,i+55] + SHELOB.mcmc[[1]][,i+61]*0.6 + SHELOB.mcmc[[1]][,i+67]*0.5 + SHELOB.mcmc[[1]][,i+73]*0.5 + SHELOB.mcmc[[1]][,i+79]*0.5)/(1+exp(SHELOB.mcmc[[1]][,i+55] + SHELOB.mcmc[[1]][,i+61]*0.6 + SHELOB.mcmc[[1]][,i+67]*0.5 + SHELOB.mcmc[[1]][,i+73]*0.5 + SHELOB.mcmc[[1]][,i+79]*0.5)) - exp(SHELOB.mcmc[[1]][,i+55] + SHELOB.mcmc[[1]][,i+61]*0 + SHELOB.mcmc[[1]][,i+67]*0.5 + SHELOB.mcmc[[1]][,i+73]*0.5 + SHELOB.mcmc[[1]][,i+79]*0.5)/(1+exp(SHELOB.mcmc[[1]][,i+55] + SHELOB.mcmc[[1]][,i+61]*0 + SHELOB.mcmc[[1]][,i+67]*0.5 + SHELOB.mcmc[[1]][,i+73]*0.5 + SHELOB.mcmc[[1]][,i+79]*0.5))
+
+predEQM5[,i] <- exp(SHELOB.mcmc[[1]][,i+111] + SHELOB.mcmc[[1]][,i+117]*0.6 + SHELOB.mcmc[[1]][,i+123]*0.5 + SHELOB.mcmc[[1]][,i+129]*0.5 + SHELOB.mcmc[[1]][,i+135]*0.5)/(1+exp(SHELOB.mcmc[[1]][,i+111] + SHELOB.mcmc[[1]][,i+117]*0.6 + SHELOB.mcmc[[1]][,i+123]*0.5 + SHELOB.mcmc[[1]][,i+129]*0.5 + SHELOB.mcmc[[1]][,i+135]*0.5)) - exp(SHELOB.mcmc[[1]][,i+111] + SHELOB.mcmc[[1]][,i+117]*0 + SHELOB.mcmc[[1]][,i+123]*0.5 + SHELOB.mcmc[[1]][,i+129]*0.5 + SHELOB.mcmc[[1]][,i+135]*0.5)/(1+exp(SHELOB.mcmc[[1]][,i+111] + SHELOB.mcmc[[1]][,i+117]*0 + SHELOB.mcmc[[1]][,i+123]*0.5 + SHELOB.mcmc[[1]][,i+129]*0.5 + SHELOB.mcmc[[1]][,i+135]*0.5))
+}
+
+for(i in 1:N5){
+predEQM2[,i] <- exp(SHELOB.mcmc[[1]][,i+30] + SHELOB.mcmc[[1]][,i+35]*0.6 + SHELOB.mcmc[[1]][,i+40]*0.5 + SHELOB.mcmc[[1]][,i+45]*0.5 + SHELOB.mcmc[[1]][,i+50]*0.5)/(1+exp(SHELOB.mcmc[[1]][,i+30] + SHELOB.mcmc[[1]][,i+35]*0.6 + SHELOB.mcmc[[1]][,i+40]*0.5 + SHELOB.mcmc[[1]][,i+45]*0.5 + SHELOB.mcmc[[1]][,i+50]*0.5)) - exp(SHELOB.mcmc[[1]][,i+30] + SHELOB.mcmc[[1]][,i+35]*0 + SHELOB.mcmc[[1]][,i+40]*0.5 + SHELOB.mcmc[[1]][,i+45]*0.5 + SHELOB.mcmc[[1]][,i+50]*0.5)/(1+exp(SHELOB.mcmc[[1]][,i+30] + SHELOB.mcmc[[1]][,i+35]*0 + SHELOB.mcmc[[1]][,i+40]*0.5 + SHELOB.mcmc[[1]][,i+45]*0.5 + SHELOB.mcmc[[1]][,i+50]*0.5))
+ 
+predEQM4[,i] <- exp(SHELOB.mcmc[[1]][,i+86] + SHELOB.mcmc[[1]][,i+91]*0.6 + SHELOB.mcmc[[1]][,i+96]*0.5 + SHELOB.mcmc[[1]][,i+101]*0.5 + SHELOB.mcmc[[1]][,i+106]*0.5)/(1+exp(SHELOB.mcmc[[1]][,i+86] + SHELOB.mcmc[[1]][,i+91]*0.6 + SHELOB.mcmc[[1]][,i+96]*0.5 + SHELOB.mcmc[[1]][,i+101]*0.5 + SHELOB.mcmc[[1]][,i+106]*0.5)) - exp(SHELOB.mcmc[[1]][,i+86] + SHELOB.mcmc[[1]][,i+91]*0 + SHELOB.mcmc[[1]][,i+96]*0.5 + SHELOB.mcmc[[1]][,i+101]*0.5 + SHELOB.mcmc[[1]][,i+106]*0.5)/(1+exp(SHELOB.mcmc[[1]][,i+86] + SHELOB.mcmc[[1]][,i+91]*0 + SHELOB.mcmc[[1]][,i+96]*0.5 + SHELOB.mcmc[[1]][,i+101]*0.5 + SHELOB.mcmc[[1]][,i+106]*0.5))
+
+predEQM6[,i] <- exp(SHELOB.mcmc[[1]][,i+141] + SHELOB.mcmc[[1]][,i+147]*0.6 + SHELOB.mcmc[[1]][,i+152]*0.5 + SHELOB.mcmc[[1]][,i+157]*0.5 + SHELOB.mcmc[[1]][,i+161]*0.5)/(1+exp(SHELOB.mcmc[[1]][,i+141] + SHELOB.mcmc[[1]][,i+147]*0.6 + SHELOB.mcmc[[1]][,i+152]*0.5 + SHELOB.mcmc[[1]][,i+157]*0.5 + SHELOB.mcmc[[1]][,i+161]*0.5)) - exp(SHELOB.mcmc[[1]][,i+141] + SHELOB.mcmc[[1]][,i+147]*0 + SHELOB.mcmc[[1]][,i+152]*0.5 + SHELOB.mcmc[[1]][,i+157]*0.5 + SHELOB.mcmc[[1]][,i+161]*0.5)/(1+exp(SHELOB.mcmc[[1]][,i+141] + SHELOB.mcmc[[1]][,i+147]*0 + SHELOB.mcmc[[1]][,i+152]*0.5 + SHELOB.mcmc[[1]][,i+157]*0.5 + SHELOB.mcmc[[1]][,i+161]*0.5))
+}
+
+predEQM2 <- cbind(predEQM2, rep(0, 25000))
+predEQM4 <- cbind(predEQM4, rep(0, 25000))
+predEQM6 <- cbind(predEQM6, rep(0, 25000))
+
+
+N <- 6
+for(i in 1:N){
+predM[i,2] <- mean(predEQM1[,i])
+predM[i,3] <- quantile(predEQM1[,i], 0.025)
+predM[i,4] <- quantile(predEQM1[,i], 0.975)
+predM[i+6,2] <- mean(predEQM2[,i])
+predM[i+6,3] <- quantile(predEQM2[,i], 0.025)
+predM[i+6,4] <- quantile(predEQM2[,i], 0.975)
+predM[i+12,2] <- mean(predEQM3[,i])
+predM[i+12,3] <- quantile(predEQM3[,i], 0.025)
+predM[i+12,4] <- quantile(predEQM3[,i], 0.975)
+predM[i+18,2] <- mean(predEQM4[,i])
+predM[i+18,3] <- quantile(predEQM4[,i], 0.025)
+predM[i+18,4] <- quantile(predEQM4[,i], 0.975)
+predM[i+24,2] <- mean(predEQM5[,i])
+predM[i+24,3] <- quantile(predEQM5[,i], 0.025)
+predM[i+24,4] <- quantile(predEQM5[,i], 0.975)
+predM[i+30,2] <- mean(predEQM6[,i])
+predM[i+30,3] <- quantile(predEQM6[,i], 0.025)
+predM[i+30,4] <- quantile(predEQM6[,i], 0.975)
+}
+
+
+#Effect sizes for Rats
+N6 <- 6
+N5 <- 5
+predEQR1 <- mat.or.vec(25000,N6)
+predEQR2 <- mat.or.vec(25000,N5)
+predEQR3 <- mat.or.vec(25000,N6)
+predEQR4 <- mat.or.vec(25000,N5)
+predEQR5 <- mat.or.vec(25000,N6)
+predEQR6 <- mat.or.vec(25000,N5)
+predR <- as.matrix(1:36, nrow= 36, ncol=1)
+predR <- cbind(predR, rep(0, 36))
+predR <- cbind(predR, rep(0, 36))
+predR <- cbind(predR, rep(0, 36))
+for(i in 1:N6){
+predEQR1[,i] <- exp(SHELOB.mcmc[[1]][,i] + SHELOB.mcmc[[1]][,i+6]*0.5 + SHELOB.mcmc[[1]][,i+12]*0.6 + SHELOB.mcmc[[1]][,i+18]*0.5 + SHELOB.mcmc[[1]][,i+24]*0.5)/(1+exp(SHELOB.mcmc[[1]][,i] + SHELOB.mcmc[[1]][,i+6]*0.5 + SHELOB.mcmc[[1]][,i+12]*0.6 + SHELOB.mcmc[[1]][,i+18]*0.5 + SHELOB.mcmc[[1]][,i+24]*0.5)) - exp(SHELOB.mcmc[[1]][,i] + SHELOB.mcmc[[1]][,i+6]*0.5 + SHELOB.mcmc[[1]][,i+12]*0 + SHELOB.mcmc[[1]][,i+18]*0.5 + SHELOB.mcmc[[1]][,i+24]*0.5)/(1+exp(SHELOB.mcmc[[1]][,i] + SHELOB.mcmc[[1]][,i+6]*0.5 + SHELOB.mcmc[[1]][,i+12]*0 + SHELOB.mcmc[[1]][,i+18]*0.5 + SHELOB.mcmc[[1]][,i+24]*0.5))
+
+predEQR3[,i] <- exp(SHELOB.mcmc[[1]][,i+55] + SHELOB.mcmc[[1]][,i+61]*0.5 + SHELOB.mcmc[[1]][,i+67]*0.6 + SHELOB.mcmc[[1]][,i+73]*0.5 + SHELOB.mcmc[[1]][,i+79]*0.5)/(1+exp(SHELOB.mcmc[[1]][,i+55] + SHELOB.mcmc[[1]][,i+61]*0.5 + SHELOB.mcmc[[1]][,i+67]*0.6 + SHELOB.mcmc[[1]][,i+73]*0.5 + SHELOB.mcmc[[1]][,i+79]*0.5)) - exp(SHELOB.mcmc[[1]][,i+55] + SHELOB.mcmc[[1]][,i+61]*0.5 + SHELOB.mcmc[[1]][,i+67]*0 + SHELOB.mcmc[[1]][,i+73]*0.5 + SHELOB.mcmc[[1]][,i+79]*0.5)/(1+exp(SHELOB.mcmc[[1]][,i+55] + SHELOB.mcmc[[1]][,i+61]*0.5 + SHELOB.mcmc[[1]][,i+67]*0 + SHELOB.mcmc[[1]][,i+73]*0.5 + SHELOB.mcmc[[1]][,i+79]*0.5))
+
+predEQR5[,i] <- exp(SHELOB.mcmc[[1]][,i+111] + SHELOB.mcmc[[1]][,i+117]*0.5 + SHELOB.mcmc[[1]][,i+123]*0.6 + SHELOB.mcmc[[1]][,i+129]*0.5 + SHELOB.mcmc[[1]][,i+135]*0.5)/(1+exp(SHELOB.mcmc[[1]][,i+111] + SHELOB.mcmc[[1]][,i+117]*0.5 + SHELOB.mcmc[[1]][,i+123]*0.6 + SHELOB.mcmc[[1]][,i+129]*0.5 + SHELOB.mcmc[[1]][,i+135]*0.5)) - exp(SHELOB.mcmc[[1]][,i+111] + SHELOB.mcmc[[1]][,i+117]*0.5 + SHELOB.mcmc[[1]][,i+123]*0 + SHELOB.mcmc[[1]][,i+129]*0.5 + SHELOB.mcmc[[1]][,i+135]*0.5)/(1+exp(SHELOB.mcmc[[1]][,i+111] + SHELOB.mcmc[[1]][,i+117]*0.5 + SHELOB.mcmc[[1]][,i+123]*0 + SHELOB.mcmc[[1]][,i+129]*0.5 + SHELOB.mcmc[[1]][,i+135]*0.5))
+}
+
+for(i in 1:N5){
+predEQR2[,i] <- exp(SHELOB.mcmc[[1]][,i+30] + SHELOB.mcmc[[1]][,i+35]*0.5 + SHELOB.mcmc[[1]][,i+40]*0.6 + SHELOB.mcmc[[1]][,i+45]*0.5 + SHELOB.mcmc[[1]][,i+50]*0.5)/(1+exp(SHELOB.mcmc[[1]][,i+30] + SHELOB.mcmc[[1]][,i+35]*0.5 + SHELOB.mcmc[[1]][,i+40]*0.6 + SHELOB.mcmc[[1]][,i+45]*0.5 + SHELOB.mcmc[[1]][,i+50]*0.5)) - exp(SHELOB.mcmc[[1]][,i+30] + SHELOB.mcmc[[1]][,i+35]*0.5 + SHELOB.mcmc[[1]][,i+40]*0 + SHELOB.mcmc[[1]][,i+45]*0.5 + SHELOB.mcmc[[1]][,i+50]*0.5)/(1+exp(SHELOB.mcmc[[1]][,i+30] + SHELOB.mcmc[[1]][,i+35]*0.5 + SHELOB.mcmc[[1]][,i+40]*0 + SHELOB.mcmc[[1]][,i+45]*0.5 + SHELOB.mcmc[[1]][,i+50]*0.5))
+ 
+predEQR4[,i] <- exp(SHELOB.mcmc[[1]][,i+86] + SHELOB.mcmc[[1]][,i+91]*0.5 + SHELOB.mcmc[[1]][,i+96]*0.6 + SHELOB.mcmc[[1]][,i+101]*0.5 + SHELOB.mcmc[[1]][,i+106]*0.5)/(1+exp(SHELOB.mcmc[[1]][,i+86] + SHELOB.mcmc[[1]][,i+91]*0.5 + SHELOB.mcmc[[1]][,i+96]*0.6 + SHELOB.mcmc[[1]][,i+101]*0.5 + SHELOB.mcmc[[1]][,i+106]*0.5)) - exp(SHELOB.mcmc[[1]][,i+86] + SHELOB.mcmc[[1]][,i+91]*0.5 + SHELOB.mcmc[[1]][,i+96]*0 + SHELOB.mcmc[[1]][,i+101]*0.5 + SHELOB.mcmc[[1]][,i+106]*0.5)/(1+exp(SHELOB.mcmc[[1]][,i+86] + SHELOB.mcmc[[1]][,i+91]*0.5 + SHELOB.mcmc[[1]][,i+96]*0 + SHELOB.mcmc[[1]][,i+101]*0.5 + SHELOB.mcmc[[1]][,i+106]*0.5))
+
+predEQR6[,i] <- exp(SHELOB.mcmc[[1]][,i+141] + SHELOB.mcmc[[1]][,i+147]*0.5 + SHELOB.mcmc[[1]][,i+152]*0.6 + SHELOB.mcmc[[1]][,i+157]*0.5 + SHELOB.mcmc[[1]][,i+161]*0.5)/(1+exp(SHELOB.mcmc[[1]][,i+141] + SHELOB.mcmc[[1]][,i+147]*0.5 + SHELOB.mcmc[[1]][,i+152]*0.6 + SHELOB.mcmc[[1]][,i+157]*0.5 + SHELOB.mcmc[[1]][,i+161]*0.5)) - exp(SHELOB.mcmc[[1]][,i+141] + SHELOB.mcmc[[1]][,i+147]*0.5 + SHELOB.mcmc[[1]][,i+152]*0 + SHELOB.mcmc[[1]][,i+157]*0.5 + SHELOB.mcmc[[1]][,i+161]*0.5)/(1+exp(SHELOB.mcmc[[1]][,i+141] + SHELOB.mcmc[[1]][,i+147]*0.5 + SHELOB.mcmc[[1]][,i+152]*0 + SHELOB.mcmc[[1]][,i+157]*0.5 + SHELOB.mcmc[[1]][,i+161]*0.5))
+}
+
+predEQR2 <- cbind(predEQR2, rep(0, 25000))
+predEQR4 <- cbind(predEQR4, rep(0, 25000))
+predEQR6 <- cbind(predEQR6, rep(0, 25000))
+
+
+N <- 6
+for(i in 1:N){
+predR[i,2] <- mean(predEQR1[,i])
+predR[i,3] <- quantile(predEQR1[,i], 0.025)
+predR[i,4] <- quantile(predEQR1[,i], 0.975)
+predR[i+6,2] <- mean(predEQR2[,i])
+predR[i+6,3] <- quantile(predEQR2[,i], 0.025)
+predR[i+6,4] <- quantile(predEQR2[,i], 0.975)
+predR[i+12,2] <- mean(predEQR3[,i])
+predR[i+12,3] <- quantile(predEQR3[,i], 0.025)
+predR[i+12,4] <- quantile(predEQR3[,i], 0.975)
+predR[i+18,2] <- mean(predEQR4[,i])
+predR[i+18,3] <- quantile(predEQR4[,i], 0.025)
+predR[i+18,4] <- quantile(predEQR4[,i], 0.975)
+predR[i+24,2] <- mean(predEQR5[,i])
+predR[i+24,3] <- quantile(predEQR5[,i], 0.025)
+predR[i+24,4] <- quantile(predEQR5[,i], 0.975)
+predR[i+30,2] <- mean(predEQR6[,i])
+predR[i+30,3] <- quantile(predEQR6[,i], 0.025)
+predR[i+30,4] <- quantile(predEQR6[,i], 0.975)
+}
+
+
+#Effect sizes for Ants
+N6 <- 6
+N5 <- 5
+predEQA1 <- mat.or.vec(25000,N6)
+predEQA2 <- mat.or.vec(25000,N5)
+predEQA3 <- mat.or.vec(25000,N6)
+predEQA4 <- mat.or.vec(25000,N5)
+predEQA5 <- mat.or.vec(25000,N6)
+predEQA6 <- mat.or.vec(25000,N5)
+predA <- as.matrix(1:36, nrow= 36, ncol=1)
+predA <- cbind(predA, rep(0, 36))
+predA <- cbind(predA, rep(0, 36))
+predA <- cbind(predA, rep(0, 36))
+for(i in 1:N6){
+predEQA1[,i] <- exp(SHELOB.mcmc[[1]][,i] + SHELOB.mcmc[[1]][,i+6]*0.5 + SHELOB.mcmc[[1]][,i+12]*0.5 + SHELOB.mcmc[[1]][,i+18]*0.6 + SHELOB.mcmc[[1]][,i+24]*0.5)/(1+exp(SHELOB.mcmc[[1]][,i] + SHELOB.mcmc[[1]][,i+6]*0.5 + SHELOB.mcmc[[1]][,i+12]*0.5 + SHELOB.mcmc[[1]][,i+18]*0.6 + SHELOB.mcmc[[1]][,i+24]*0.5)) - exp(SHELOB.mcmc[[1]][,i] + SHELOB.mcmc[[1]][,i+6]*0.5 + SHELOB.mcmc[[1]][,i+12]*0.5 + SHELOB.mcmc[[1]][,i+18]*0 + SHELOB.mcmc[[1]][,i+24]*0.5)/(1+exp(SHELOB.mcmc[[1]][,i] + SHELOB.mcmc[[1]][,i+6]*0.5 + SHELOB.mcmc[[1]][,i+12]*0.5 + SHELOB.mcmc[[1]][,i+18]*0 + SHELOB.mcmc[[1]][,i+24]*0.5))
+
+predEQA3[,i] <- exp(SHELOB.mcmc[[1]][,i+55] + SHELOB.mcmc[[1]][,i+61]*0.5 + SHELOB.mcmc[[1]][,i+67]*0.5 + SHELOB.mcmc[[1]][,i+73]*0.6 + SHELOB.mcmc[[1]][,i+79]*0.5)/(1+exp(SHELOB.mcmc[[1]][,i+55] + SHELOB.mcmc[[1]][,i+61]*0.5 + SHELOB.mcmc[[1]][,i+67]*0.5 + SHELOB.mcmc[[1]][,i+73]*0.6 + SHELOB.mcmc[[1]][,i+79]*0.5)) - exp(SHELOB.mcmc[[1]][,i+55] + SHELOB.mcmc[[1]][,i+61]*0.5 + SHELOB.mcmc[[1]][,i+67]*0.5 + SHELOB.mcmc[[1]][,i+73]*0 + SHELOB.mcmc[[1]][,i+79]*0.5)/(1+exp(SHELOB.mcmc[[1]][,i+55] + SHELOB.mcmc[[1]][,i+61]*0.5 + SHELOB.mcmc[[1]][,i+67]*0.5 + SHELOB.mcmc[[1]][,i+73]*0 + SHELOB.mcmc[[1]][,i+79]*0.5))
+
+predEQA5[,i] <- exp(SHELOB.mcmc[[1]][,i+111] + SHELOB.mcmc[[1]][,i+117]*0.5 + SHELOB.mcmc[[1]][,i+123]*0.5 + SHELOB.mcmc[[1]][,i+129]*0.6 + SHELOB.mcmc[[1]][,i+135]*0.5)/(1+exp(SHELOB.mcmc[[1]][,i+111] + SHELOB.mcmc[[1]][,i+117]*0.5 + SHELOB.mcmc[[1]][,i+123]*0.5 + SHELOB.mcmc[[1]][,i+129]*0.6 + SHELOB.mcmc[[1]][,i+135]*0.5)) - exp(SHELOB.mcmc[[1]][,i+111] + SHELOB.mcmc[[1]][,i+117]*0.5 + SHELOB.mcmc[[1]][,i+123]*0.5 + SHELOB.mcmc[[1]][,i+129]*0 + SHELOB.mcmc[[1]][,i+135]*0.5)/(1+exp(SHELOB.mcmc[[1]][,i+111] + SHELOB.mcmc[[1]][,i+117]*0.5 + SHELOB.mcmc[[1]][,i+123]*0.5 + SHELOB.mcmc[[1]][,i+129]*0 + SHELOB.mcmc[[1]][,i+135]*0.5))
+}
+
+for(i in 1:N5){
+predEQA2[,i] <- exp(SHELOB.mcmc[[1]][,i+30] + SHELOB.mcmc[[1]][,i+35]*0.5 + SHELOB.mcmc[[1]][,i+40]*0.5 + SHELOB.mcmc[[1]][,i+45]*0.6 + SHELOB.mcmc[[1]][,i+50]*0.5)/(1+exp(SHELOB.mcmc[[1]][,i+30] + SHELOB.mcmc[[1]][,i+35]*0.5 + SHELOB.mcmc[[1]][,i+40]*0.5 + SHELOB.mcmc[[1]][,i+45]*0.6 + SHELOB.mcmc[[1]][,i+50]*0.5)) - exp(SHELOB.mcmc[[1]][,i+30] + SHELOB.mcmc[[1]][,i+35]*0.5 + SHELOB.mcmc[[1]][,i+40]*0.5 + SHELOB.mcmc[[1]][,i+45]*0 + SHELOB.mcmc[[1]][,i+50]*0.5)/(1+exp(SHELOB.mcmc[[1]][,i+30] + SHELOB.mcmc[[1]][,i+35]*0.5 + SHELOB.mcmc[[1]][,i+40]*0.5 + SHELOB.mcmc[[1]][,i+45]*0 + SHELOB.mcmc[[1]][,i+50]*0.5))
+ 
+predEQA4[,i] <- exp(SHELOB.mcmc[[1]][,i+86] + SHELOB.mcmc[[1]][,i+91]*0.5 + SHELOB.mcmc[[1]][,i+96]*0.5 + SHELOB.mcmc[[1]][,i+101]*0.6 + SHELOB.mcmc[[1]][,i+106]*0.5)/(1+exp(SHELOB.mcmc[[1]][,i+86] + SHELOB.mcmc[[1]][,i+91]*0.5 + SHELOB.mcmc[[1]][,i+96]*0.5 + SHELOB.mcmc[[1]][,i+101]*0.6 + SHELOB.mcmc[[1]][,i+106]*0.5)) - exp(SHELOB.mcmc[[1]][,i+86] + SHELOB.mcmc[[1]][,i+91]*0.5 + SHELOB.mcmc[[1]][,i+96]*0.5 + SHELOB.mcmc[[1]][,i+101]*0 + SHELOB.mcmc[[1]][,i+106]*0.5)/(1+exp(SHELOB.mcmc[[1]][,i+86] + SHELOB.mcmc[[1]][,i+91]*0.5 + SHELOB.mcmc[[1]][,i+96]*0.5 + SHELOB.mcmc[[1]][,i+101]*0 + SHELOB.mcmc[[1]][,i+106]*0.5))
+
+predEQA6[,i] <- exp(SHELOB.mcmc[[1]][,i+141] + SHELOB.mcmc[[1]][,i+147]*0.5 + SHELOB.mcmc[[1]][,i+152]*0.5 + SHELOB.mcmc[[1]][,i+157]*0.6 + SHELOB.mcmc[[1]][,i+161]*0.5)/(1+exp(SHELOB.mcmc[[1]][,i+141] + SHELOB.mcmc[[1]][,i+147]*0.5 + SHELOB.mcmc[[1]][,i+152]*0.5 + SHELOB.mcmc[[1]][,i+157]*0.6 + SHELOB.mcmc[[1]][,i+161]*0.5)) - exp(SHELOB.mcmc[[1]][,i+141] + SHELOB.mcmc[[1]][,i+147]*0.5 + SHELOB.mcmc[[1]][,i+152]*0.5 + SHELOB.mcmc[[1]][,i+157]*0 + SHELOB.mcmc[[1]][,i+161]*0.5)/(1+exp(SHELOB.mcmc[[1]][,i+141] + SHELOB.mcmc[[1]][,i+147]*0.5 + SHELOB.mcmc[[1]][,i+152]*0.5 + SHELOB.mcmc[[1]][,i+157]*0 + SHELOB.mcmc[[1]][,i+161]*0.5))
+}
+
+predEQA2 <- cbind(predEQA2, rep(0, 25000))
+predEQA4 <- cbind(predEQA4, rep(0, 25000))
+predEQA6 <- cbind(predEQA6, rep(0, 25000))
+
+
+N <- 6
+for(i in 1:N){
+predA[i,2] <- mean(predEQA1[,i])
+predA[i,3] <- quantile(predEQA1[,i], 0.025)
+predA[i,4] <- quantile(predEQA1[,i], 0.975)
+predA[i+6,2] <- mean(predEQA2[,i])
+predA[i+6,3] <- quantile(predEQA2[,i], 0.025)
+predA[i+6,4] <- quantile(predEQA2[,i], 0.975)
+predA[i+12,2] <- mean(predEQA3[,i])
+predA[i+12,3] <- quantile(predEQA3[,i], 0.025)
+predA[i+12,4] <- quantile(predEQA3[,i], 0.975)
+predA[i+18,2] <- mean(predEQA4[,i])
+predA[i+18,3] <- quantile(predEQA4[,i], 0.025)
+predA[i+18,4] <- quantile(predEQA4[,i], 0.975)
+predA[i+24,2] <- mean(predEQA5[,i])
+predA[i+24,3] <- quantile(predEQA5[,i], 0.025)
+predA[i+24,4] <- quantile(predEQA5[,i], 0.975)
+predA[i+30,2] <- mean(predEQA6[,i])
+predA[i+30,3] <- quantile(predEQA6[,i], 0.025)
+predA[i+30,4] <- quantile(predEQA6[,i], 0.975)
+}
+
+#Effect sizes for Wasps
+N6 <- 6
+N5 <- 5
+predEQW1 <- mat.or.vec(25000,N6)
+predEQW2 <- mat.or.vec(25000,N5)
+predEQW3 <- mat.or.vec(25000,N6)
+predEQW4 <- mat.or.vec(25000,N5)
+predEQW5 <- mat.or.vec(25000,N6)
+predEQW6 <- mat.or.vec(25000,N5)
+predW <- as.matrix(1:36, nrow= 36, ncol=1)
+predW <- cbind(predW, rep(0, 36))
+predW <- cbind(predW, rep(0, 36))
+predW <- cbind(predW, rep(0, 36))
+for(i in 1:N6){
+predEQW1[,i] <- exp(SHELOB.mcmc[[1]][,i] + SHELOB.mcmc[[1]][,i+6]*0.5 + SHELOB.mcmc[[1]][,i+12]*0.5 + SHELOB.mcmc[[1]][,i+18]*0.5 + SHELOB.mcmc[[1]][,i+24]*0.6)/(1+exp(SHELOB.mcmc[[1]][,i] + SHELOB.mcmc[[1]][,i+6]*0.5 + SHELOB.mcmc[[1]][,i+12]*0.5 + SHELOB.mcmc[[1]][,i+18]*0.5 + SHELOB.mcmc[[1]][,i+24]*0.6)) - exp(SHELOB.mcmc[[1]][,i] + SHELOB.mcmc[[1]][,i+6]*0.5 + SHELOB.mcmc[[1]][,i+12]*0.5 + SHELOB.mcmc[[1]][,i+18]*0.5 + SHELOB.mcmc[[1]][,i+24]*0)/(1+exp(SHELOB.mcmc[[1]][,i] + SHELOB.mcmc[[1]][,i+6]*0.5 + SHELOB.mcmc[[1]][,i+12]*0.5 + SHELOB.mcmc[[1]][,i+18]*0.5 + SHELOB.mcmc[[1]][,i+24]*0))
+
+predEQW3[,i] <- exp(SHELOB.mcmc[[1]][,i+55] + SHELOB.mcmc[[1]][,i+61]*0.5 + SHELOB.mcmc[[1]][,i+67]*0.5 + SHELOB.mcmc[[1]][,i+73]*0.5 + SHELOB.mcmc[[1]][,i+79]*0.6)/(1+exp(SHELOB.mcmc[[1]][,i+55] + SHELOB.mcmc[[1]][,i+61]*0.5 + SHELOB.mcmc[[1]][,i+67]*0.5 + SHELOB.mcmc[[1]][,i+73]*0.5 + SHELOB.mcmc[[1]][,i+79]*0.6)) - exp(SHELOB.mcmc[[1]][,i+55] + SHELOB.mcmc[[1]][,i+61]*0.5 + SHELOB.mcmc[[1]][,i+67]*0.5 + SHELOB.mcmc[[1]][,i+73]*0.5 + SHELOB.mcmc[[1]][,i+79]*0)/(1+exp(SHELOB.mcmc[[1]][,i+55] + SHELOB.mcmc[[1]][,i+61]*0.5 + SHELOB.mcmc[[1]][,i+67]*0.5 + SHELOB.mcmc[[1]][,i+73]*0.5 + SHELOB.mcmc[[1]][,i+79]*0))
+
+predEQW5[,i] <- exp(SHELOB.mcmc[[1]][,i+111] + SHELOB.mcmc[[1]][,i+117]*0.5 + SHELOB.mcmc[[1]][,i+123]*0.5 + SHELOB.mcmc[[1]][,i+129]*0.5 + SHELOB.mcmc[[1]][,i+135]*0.6)/(1+exp(SHELOB.mcmc[[1]][,i+111] + SHELOB.mcmc[[1]][,i+117]*0.5 + SHELOB.mcmc[[1]][,i+123]*0.5 + SHELOB.mcmc[[1]][,i+129]*0.5 + SHELOB.mcmc[[1]][,i+135]*0.6)) - exp(SHELOB.mcmc[[1]][,i+111] + SHELOB.mcmc[[1]][,i+117]*0.5 + SHELOB.mcmc[[1]][,i+123]*0.5 + SHELOB.mcmc[[1]][,i+129]*0.5 + SHELOB.mcmc[[1]][,i+135]*0)/(1+exp(SHELOB.mcmc[[1]][,i+111] + SHELOB.mcmc[[1]][,i+117]*0.5 + SHELOB.mcmc[[1]][,i+123]*0.5 + SHELOB.mcmc[[1]][,i+129]*0.5 + SHELOB.mcmc[[1]][,i+135]*0))
+}
+
+for(i in 1:N5){
+predEQW2[,i] <- exp(SHELOB.mcmc[[1]][,i+30] + SHELOB.mcmc[[1]][,i+35]*0.5 + SHELOB.mcmc[[1]][,i+40]*0.5 + SHELOB.mcmc[[1]][,i+45]*0.5 + SHELOB.mcmc[[1]][,i+50]*0.6)/(1+exp(SHELOB.mcmc[[1]][,i+30] + SHELOB.mcmc[[1]][,i+35]*0.5 + SHELOB.mcmc[[1]][,i+40]*0.5 + SHELOB.mcmc[[1]][,i+45]*0.5 + SHELOB.mcmc[[1]][,i+50]*0.6)) - exp(SHELOB.mcmc[[1]][,i+30] + SHELOB.mcmc[[1]][,i+35]*0.5 + SHELOB.mcmc[[1]][,i+40]*0.5 + SHELOB.mcmc[[1]][,i+45]*0.5 + SHELOB.mcmc[[1]][,i+50]*0)/(1+exp(SHELOB.mcmc[[1]][,i+30] + SHELOB.mcmc[[1]][,i+35]*0.5 + SHELOB.mcmc[[1]][,i+40]*0.5 + SHELOB.mcmc[[1]][,i+45]*0.5 + SHELOB.mcmc[[1]][,i+50]*0))
+ 
+predEQW4[,i] <- exp(SHELOB.mcmc[[1]][,i+86] + SHELOB.mcmc[[1]][,i+91]*0.5 + SHELOB.mcmc[[1]][,i+96]*0.5 + SHELOB.mcmc[[1]][,i+101]*0.5 + SHELOB.mcmc[[1]][,i+106]*0.6)/(1+exp(SHELOB.mcmc[[1]][,i+86] + SHELOB.mcmc[[1]][,i+91]*0.5 + SHELOB.mcmc[[1]][,i+96]*0.5 + SHELOB.mcmc[[1]][,i+101]*0.5 + SHELOB.mcmc[[1]][,i+106]*0.6)) - exp(SHELOB.mcmc[[1]][,i+86] + SHELOB.mcmc[[1]][,i+91]*0.5 + SHELOB.mcmc[[1]][,i+96]*0.5 + SHELOB.mcmc[[1]][,i+101]*0.5 + SHELOB.mcmc[[1]][,i+106]*0)/(1+exp(SHELOB.mcmc[[1]][,i+86] + SHELOB.mcmc[[1]][,i+91]*0.5 + SHELOB.mcmc[[1]][,i+96]*0.5 + SHELOB.mcmc[[1]][,i+101]*0.5 + SHELOB.mcmc[[1]][,i+106]*0))
+
+predEQW6[,i] <- exp(SHELOB.mcmc[[1]][,i+141] + SHELOB.mcmc[[1]][,i+147]*0.5 + SHELOB.mcmc[[1]][,i+152]*0.5 + SHELOB.mcmc[[1]][,i+157]*0.5 + SHELOB.mcmc[[1]][,i+161]*0.6)/(1+exp(SHELOB.mcmc[[1]][,i+141] + SHELOB.mcmc[[1]][,i+147]*0.5 + SHELOB.mcmc[[1]][,i+152]*0.5 + SHELOB.mcmc[[1]][,i+157]*0.5 + SHELOB.mcmc[[1]][,i+161]*0.6)) - exp(SHELOB.mcmc[[1]][,i+141] + SHELOB.mcmc[[1]][,i+147]*0.5 + SHELOB.mcmc[[1]][,i+152]*0.5 + SHELOB.mcmc[[1]][,i+157]*0.5 + SHELOB.mcmc[[1]][,i+161]*0)/(1+exp(SHELOB.mcmc[[1]][,i+141] + SHELOB.mcmc[[1]][,i+147]*0.5 + SHELOB.mcmc[[1]][,i+152]*0.5 + SHELOB.mcmc[[1]][,i+157]*0.5 + SHELOB.mcmc[[1]][,i+161]*0))
+}
+
+predEQW2 <- cbind(predEQW2, rep(0, 25000))
+predEQW4 <- cbind(predEQW4, rep(0, 25000))
+predEQW6 <- cbind(predEQW6, rep(0, 25000))
+
+
+N <- 6
+for(i in 1:N){
+predW[i,2] <- mean(predEQW1[,i])
+predW[i,3] <- quantile(predEQW1[,i], 0.025)
+predW[i,4] <- quantile(predEQW1[,i], 0.975)
+predW[i+6,2] <- mean(predEQW2[,i])
+predW[i+6,3] <- quantile(predEQW2[,i], 0.025)
+predW[i+6,4] <- quantile(predEQW2[,i], 0.975)
+predW[i+12,2] <- mean(predEQW3[,i])
+predW[i+12,3] <- quantile(predEQW3[,i], 0.025)
+predW[i+12,4] <- quantile(predEQW3[,i], 0.975)
+predW[i+18,2] <- mean(predEQW4[,i])
+predW[i+18,3] <- quantile(predEQW4[,i], 0.025)
+predW[i+18,4] <- quantile(predEQW4[,i], 0.975)
+predW[i+24,2] <- mean(predEQW5[,i])
+predW[i+24,3] <- quantile(predEQW5[,i], 0.025)
+predW[i+24,4] <- quantile(predEQW5[,i], 0.975)
+predW[i+30,2] <- mean(predEQW6[,i])
+predW[i+30,3] <- quantile(predEQW6[,i], 0.025)
+predW[i+30,4] <- quantile(predEQW6[,i], 0.975)
+}
+
+
+#SolitaryBees
+SoBMeans <- c(predM[1,2], predR[1,2], predA[1,2], predW[1,2], 
+predM[2,2], predR[2,2], predA[2,2], predW[2,2], 
+predM[3,2], predR[3,2], predA[3,2], predW[3,2], 
+predM[4,2], predR[4,2], predA[4,2], predW[4,2], 
+predM[5,2], predR[5,2], predA[5,2], predW[5,2], 
+predM[6,2], predR[6,2], predA[6,2], predW[6,2])
+SoBLQ <- c(predM[1,3], predR[1,3], predA[1,3], predW[1,3], 
+predM[2,3], predR[2,3], predA[2,3], predW[2,3], 
+predM[3,3], predR[3,3], predA[3,3], predW[3,3], 
+predM[4,3], predR[4,3], predA[4,3], predW[4,3], 
+predM[5,3], predR[5,3], predA[5,3], predW[5,3], 
+predM[6,3], predR[6,3], predA[6,3], predW[6,3])
+SoBUQ <- c(predM[1,4], predR[1,4], predA[1,4], predW[1,4], 
+predM[2,4], predR[2,4], predA[2,4], predW[2,4], 
+predM[3,4], predR[3,4], predA[3,4], predW[3,4], 
+predM[4,4], predR[4,4], predA[4,4], predW[4,4], 
+predM[5,4], predR[5,4], predA[5,4], predW[5,4], 
+predM[6,4], predR[6,4], predA[6,4], predW[6,4])
+
+#SocialBees
+SlBMeans <- c(predM[7,2], predR[7,2], predA[7,2], predW[7,2], 
+predM[8,2], predR[8,2], predA[8,2], predW[8,2], 
+predM[9,2], predR[9,2], predA[9,2], predW[9,2], 
+predM[10,2], predR[10,2], predA[10,2], predW[10,2], 
+predM[11,2], predR[11,2], predA[11,2], predW[11,2], 
+predM[12,2], predR[12,2], predA[12,2], predW[12,2])
+SlBLQ <- c(predM[7,3], predR[7,3], predA[7,3], predW[7,3], 
+predM[8,3], predR[8,3], predA[8,3], predW[8,3], 
+predM[9,3], predR[9,3], predA[9,3], predW[9,3], 
+predM[10,3], predR[10,3], predA[10,3], predW[10,3], 
+predM[11,3], predR[11,3], predA[11,3], predW[11,3], 
+predM[12,3], predR[12,3], predA[12,3], predW[12,3])
+SlBUQ <- c(predM[7,4], predR[7,4], predA[7,4], predW[7,4], 
+predM[8,4], predR[8,4], predA[8,4], predW[8,4], 
+predM[9,4], predR[9,4], predA[9,4], predW[9,4], 
+predM[10,4], predR[10,4], predA[10,4], predW[10,4], 
+predM[11,4], predR[11,4], predA[11,4], predW[11,4], 
+predM[12,4], predR[12,4], predA[12,4], predW[12,4])
+SlBMeans <- c(SlBMeans[1:16], SlBMeans[21:24], SlBMeans[17:20])
+SlBLQ <- c(SlBLQ[1:16], SlBLQ[21:24], SlBLQ[17:20])
+SlBUQ <- c(SlBUQ[1:16], SlBUQ[21:24], SlBUQ[17:20])
+
+#Moths & Butterflies
+MBMeans <- c(predM[13,2], predR[13,2], predA[13,2], predW[13,2], 
+predM[14,2], predR[14,2], predA[14,2], predW[14,2], 
+predM[15,2], predR[15,2], predA[15,2], predW[15,2], 
+predM[16,2], predR[16,2], predA[16,2], predW[16,2], 
+predM[17,2], predR[17,2], predA[17,2], predW[17,2], 
+predM[18,2], predR[18,2], predA[18,2], predW[18,2])
+MBLQ <- c(predM[13,3], predR[13,3], predA[13,3], predW[13,3], 
+predM[14,3], predR[14,3], predA[14,3], predW[14,3], 
+predM[15,3], predR[15,3], predA[15,3], predW[15,3], 
+predM[16,3], predR[16,3], predA[16,3], predW[16,3], 
+predM[17,3], predR[17,3], predA[17,3], predW[17,3], 
+predM[18,3], predR[18,3], predA[18,3], predW[18,3])
+MBUQ <- c(predM[13,4], predR[13,4], predA[13,4], predW[13,4], 
+predM[14,4], predR[14,4], predA[14,4], predW[14,4], 
+predM[15,4], predR[15,4], predA[15,4], predW[15,4], 
+predM[16,4], predR[16,4], predA[16,4], predW[16,4], 
+predM[17,4], predR[17,4], predA[17,4], predW[17,4], 
+predM[18,4], predR[18,4], predA[18,4], predW[18,4])
+
+#Non-syrphid flies
+DMeans <- c(predM[19,2], predR[19,2], predA[19,2], predW[19,2], 
+predM[20,2], predR[20,2], predA[20,2], predW[20,2], 
+predM[21,2], predR[21,2], predA[21,2], predW[21,2], 
+predM[22,2], predR[22,2], predA[22,2], predW[22,2], 
+predM[23,2], predR[23,2], predA[23,2], predW[23,2], 
+predM[24,2], predR[24,2], predA[24,2], predW[24,2])
+DLQ <- c(predM[19,3], predR[19,3], predA[19,3], predW[19,3], 
+predM[20,3], predR[20,3], predA[20,3], predW[20,3], 
+predM[21,3], predR[21,3], predA[21,3], predW[21,3], 
+predM[22,3], predR[22,3], predA[22,3], predW[22,3], 
+predM[23,3], predR[23,3], predA[23,3], predW[23,3], 
+predM[24,3], predR[24,3], predA[24,3], predW[24,3])
+DUQ <- c(predM[19,4], predR[19,4], predA[19,4], predW[19,4], 
+predM[20,4], predR[20,4], predA[20,4], predW[20,4], 
+predM[21,4], predR[21,4], predA[21,4], predW[21,4], 
+predM[22,4], predR[22,4], predA[22,4], predW[22,4], 
+predM[23,4], predR[23,4], predA[23,4], predW[23,4], 
+predM[24,4], predR[24,4], predA[24,4], predW[24,4])
+DMeans <- c(DMeans[1:16], DMeans[21:24], DMeans[17:20])
+DLQ <- c(DLQ[1:16], DLQ[21:24], DLQ[17:20])
+DUQ <- c(DUQ[1:16], DUQ[21:24], DUQ[17:20])
+
+#Syrphid flies
+SMeans <- c(predM[25,2], predR[25,2], predA[25,2], predW[25,2], 
+predM[26,2], predR[26,2], predA[26,2], predW[26,2], 
+predM[27,2], predR[27,2], predA[27,2], predW[27,2], 
+predM[28,2], predR[28,2], predA[28,2], predW[28,2], 
+predM[29,2], predR[29,2], predA[29,2], predW[29,2], 
+predM[30,2], predR[30,2], predA[30,2], predW[30,2])
+SLQ <- c(predM[25,3], predR[25,3], predA[25,3], predW[25,3], 
+predM[26,3], predR[26,3], predA[26,3], predW[26,3], 
+predM[27,3], predR[27,3], predA[27,3], predW[27,3], 
+predM[28,3], predR[28,3], predA[28,3], predW[28,3], 
+predM[29,3], predR[29,3], predA[29,3], predW[29,3], 
+predM[30,3], predR[30,3], predA[30,3], predW[30,3])
+SUQ <- c(predM[25,4], predR[25,4], predA[25,4], predW[25,4], 
+predM[26,4], predR[26,4], predA[26,4], predW[26,4], 
+predM[27,4], predR[27,4], predA[27,4], predW[27,4], 
+predM[28,4], predR[28,4], predA[28,4], predW[28,4], 
+predM[29,4], predR[29,4], predA[29,4], predW[29,4], 
+predM[30,4], predR[30,4], predA[30,4], predW[30,4])
+
+#Non-vespid wasps
+NVMeans <- c(predM[31,2], predR[31,2], predA[31,2], predW[31,2], 
+predM[32,2], predR[32,2], predA[32,2], predW[32,2], 
+predM[33,2], predR[33,2], predA[33,2], predW[33,2], 
+predM[34,2], predR[34,2], predA[34,2], predW[34,2], 
+predM[35,2], predR[35,2], predA[35,2], predW[35,2], 
+predM[36,2], predR[36,2], predA[36,2], predW[36,2])
+NVLQ <- c(predM[31,3], predR[31,3], predA[31,3], predW[31,3], 
+predM[32,3], predR[32,3], predA[32,3], predW[32,3], 
+predM[33,3], predR[33,3], predA[33,3], predW[33,3], 
+predM[34,3], predR[34,3], predA[34,3], predW[34,3], 
+predM[35,3], predR[35,3], predA[35,3], predW[35,3], 
+predM[36,3], predR[36,3], predA[36,3], predW[36,3])
+NVUQ <- c(predM[31,4], predR[31,4], predA[31,4], predW[31,4], 
+predM[32,4], predR[32,4], predA[32,4], predW[32,4], 
+predM[33,4], predR[33,4], predA[33,4], predW[33,4], 
+predM[34,4], predR[34,4], predA[34,4], predW[34,4], 
+predM[35,4], predR[35,4], predA[35,4], predW[35,4], 
+predM[36,4], predR[36,4], predA[36,4], predW[36,4])
+NVMeans <- c(NVMeans[1:16], NVMeans[21:24], NVMeans[17:20])
+NVLQ <- c(NVLQ[1:16], NVLQ[21:24], NVLQ[17:20])
+NVUQ <- c(NVUQ[1:16], NVUQ[21:24], NVUQ[17:20])
